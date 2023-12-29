@@ -1,10 +1,12 @@
 import "./Home.scss";
+import Form from "../../components/form/Form";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Hello Home</h1>
-    </div>
+    <main className="container__home">
+      <h1>Add an employee</h1>
+      <Form />
+    </main>
   );
 };
 

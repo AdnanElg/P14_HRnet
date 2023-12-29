@@ -1,7 +1,12 @@
 import "./NotFound.scss";
+import Error from "../../components/error/Error.tsx";
 
 const NotFound = () => {
-  return <div></div>;
+  return (
+    <main>
+      <Error />
+    </main>
+  );
 };
 
 export default NotFound;

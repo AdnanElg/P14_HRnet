@@ -2,9 +2,9 @@ import "./Employees.scss";
 
 const Employees = () => {
   return (
-    <div>
+    <main>
       <h1>Hello Employee</h1>
-    </div>
+    </main>
   );
 };
 
