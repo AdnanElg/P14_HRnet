@@ -4,7 +4,8 @@
   align-items: center;
   flex-direction: column;
   border-top: 2px solid #6c6753;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
 
   img {
     max-width: 280px;
@@ -15,5 +16,6 @@
     font-weight: 300;
     color: #6c6753;
     text-align: center;
+    padding-left: 20px;
   }
 }

@@ -3,7 +3,7 @@ import Error from "../../components/error/Error.tsx";
 
 const NotFound = () => {
   return (
-    <main>
+    <main className="container__notFound">
       <Error />
     </main>
   );
