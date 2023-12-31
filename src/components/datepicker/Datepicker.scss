@@ -1,0 +1,22 @@
+.datePicker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  width: 100%;
+
+  label {
+    color: #000;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  input {
+    border: none;
+    padding: 10px 0px 10px 0px;
+    border-bottom: solid 2px #cad3ae;
+    width: 100%;
+    font-size: 16px;
+  }
+}

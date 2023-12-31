@@ -7,23 +7,43 @@
   border-radius: 20px;
   box-shadow: 0 8px 24px hsla(210, 8%, 62%, 0.2);
   margin: 2rem auto;
-  max-width: 500px;
+  max-width: 700px;
   padding: 5%;
   width: 75%;
 
   form {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     width: 100%;
 
     img {
-      width: 20%;
+      margin: 0px auto;
+      width: 13%;
+      margin-bottom: 30px;
+    }
+
+    fieldset {
+      width: 100%;
+      background-color: #eff1e3;
+      border: none;
+      border-radius: 10px;
+      padding-right: 0px;
+
+      legend {
+        text-align: right;
+        padding: 10px;
+        background-color: #eff1e3;
+        border-radius: 10px;
+        font-size: 14px;
+        color: #000;
+        font-weight: 300;
+      }
     }
   }
 
-  button {
+  &__btn {
     margin-top: 50px;
     padding: 10px;
     background-color: #cad3ae;
