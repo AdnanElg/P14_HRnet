@@ -1,19 +1,27 @@
+import { useState } from "react";
 import "./DropDown.scss";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
+import Select from "react-select";
+import {
+  StateOptionsType,
+  StateDepartmenType,
+} from "../../types/components/dropdown/DropdownType";
 
-const DropDown = () => {
-  const options = ["one", "two", "three"];
-  const defaultOption = options[0];
+const DropDown = ({
+  label,
+  options,
+}: {
+  label: string;
+  options: StateOptionsType | StateDepartmenType;
+}) => {
+  const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <div>
-      <label htmlFor="state">State</label>
-      <Dropdown
+    <div className="dropdown">
+      <label htmlFor="state">{label}</label>
+      <Select
+        defaultValue={selectedOption}
+        onChange={setSelectedOption}
         options={options}
-        onChange={(event) => event.value}
-        value={defaultOption}
-        placeholder="Select.."
       />
     </div>
   );
