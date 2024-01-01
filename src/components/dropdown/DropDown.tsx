@@ -3,16 +3,13 @@ import "./DropDown.scss";
 import Select from "react-select";
 import {
   StateOptionsType,
-  StateDepartmenType,
+  DepartmenOptionType,
 } from "../../types/components/dropdown/DropdownType";
 
 const DropDown = ({
   label,
   options,
-}: {
-  label: string;
-  options: StateOptionsType | StateDepartmenType;
-}) => {
+}: StateOptionsType | DepartmenOptionType) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (

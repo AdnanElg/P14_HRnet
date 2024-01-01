@@ -1,8 +1,9 @@
 export type StateOptionsType = {
-  name: string;
-  abbreviation: string;
-}[];
+  label: string;
+  options: { label: string; value: string }[];
+};
 
-export type StateDepartmenType = {
-  name: string;
-}[];
+export type DepartmenOptionType = {
+  label: string;
+  options: { label: string }[];
+};
