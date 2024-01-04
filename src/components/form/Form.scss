@@ -14,7 +14,7 @@
   form {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     width: 100%;
 
@@ -42,18 +42,18 @@
         font-weight: 300;
       }
     }
-  }
 
-  &__btn {
-    margin-top: 50px;
-    padding: 10px;
-    background-color: #cad3ae;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 800;
-    border: none;
-    border-radius: 10px;
-    margin-right: 10px;
-    cursor: pointer;
+    #btn {
+      margin-top: 50px;
+      padding: 10px;
+      background-color: #cad3ae;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
   }
 }

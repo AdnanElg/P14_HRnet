@@ -1,10 +1,22 @@
 import "./Input.scss";
+import { RegisterType } from "../../types/components/input/Input";
 
-const Input = ({ name }: { name: string }) => {
+const Input = ({
+  type,
+  name,
+  register,
+  error,
+}: {
+  type: string;
+  name: string;
+  error?: string;
+  register: RegisterType;
+}) => {
   return (
     <div className="input">
       <label htmlFor={name}>{name}</label>
-      <input type="text" id={name} name={name} />
+      <input type={type} id={name} {...register} />
+      <p className="input__error">{error}</p>
     </div>
   );
 };

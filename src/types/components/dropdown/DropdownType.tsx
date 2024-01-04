@@ -7,3 +7,7 @@ export type DepartmenOptionType = {
   label: string;
   options: { label: string }[];
 };
+
+export type RegisterType = {
+  name: string;
+};
