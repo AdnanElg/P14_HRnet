@@ -8,8 +8,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormType } from "../../types/components/form/FormType";
+import { useDispatch } from "react-redux";
+import { setCreateEmployee } from "../../services/features/FormSlice";
 
 const Form = () => {
+  const dispatch = useDispatch();
+
   const stateOptions = dataState.map((item) => ({
     label: item.name,
     value: item.abbreviation,
@@ -20,50 +24,46 @@ const Form = () => {
   }));
 
   const schema = yup.object({
-    FirstName: yup
+    firstname: yup
       .string()
       .matches(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/, "Invalid FirstName")
       .required("FirstName is required"),
-    LastName: yup
+    lastname: yup
       .string()
       .matches(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/, "Invalid LastName")
       .required("LastName is required"),
-    Street: yup
+    street: yup
       .string()
       .matches(/^[a-zA-Z0-9À-ÖØ-öø-ÿ\s'-]+$/, "Invalid Street")
       .required("Street is required"),
-    City: yup
+    city: yup
       .string()
       .matches(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/, "Invalid City")
       .required("City is required"),
-    ZipCode: yup
+    zipcode: yup
       .string()
       .matches(/^[0-9]+$/, "Invalid ZipCode. Please enter only numbers.")
       .required("ZipCode is required"),
-    State: yup.string().required("State is required"),
-    Department: yup.string().required("Department is required"),
   });
 
   const form = useForm<FormType>({
     defaultValues: {
-      FirstName: "",
-      LastName: "",
-      Street: "",
-      City: "",
-      ZipCode: "",
-      State: "",
-      Department: "",
+      firstname: "",
+      lastname: "",
+      street: "",
+      city: "",
+      zipcode: "",
     },
     resolver: yupResolver(schema),
   });
 
   const { register, handleSubmit, formState, reset } = form;
-  const { errors, isSubmitSuccessful } = formState;
+  const { errors, isSubmitted } = formState;
 
   const onSubmit = (data: FormType) => {
-    console.log("Form submitted", data);
-    if (isSubmitSuccessful) {
-      alert("vous avez remplie tout les champ");
+    if (isSubmitted) {
+      // appeler la modale
+      dispatch(setCreateEmployee(data));
       reset();
     }
   };
@@ -71,54 +71,53 @@ const Form = () => {
   return (
     <div className="form">
       <form action="#" id="new-employee" onSubmit={handleSubmit(onSubmit)}>
-        <img src={addUser} alt="icône addUser" />
+        <img id="img" src={addUser} alt="icône addUser" />
 
         <Input
-          name="FirstName"
-          register={{ ...register("FirstName") }}
-          error={errors.FirstName?.message}
+          label="First Name"
+          name="firstname"
+          register={{ ...register("firstname") }}
+          error={errors.firstname?.message}
           type="text"
         />
         <Input
-          name="LastName"
-          register={{ ...register("LastName") }}
-          error={errors.LastName?.message}
+          label="Last Name"
+          name="lastname"
+          register={{ ...register("lastname") }}
+          error={errors.lastname?.message}
           type="text"
         />
-        <Datepicker label="Date of Birth" />
+        <Datepicker label="Date of Birth" name="dateofbirth" />
         <fieldset>
           <legend>Address</legend>
           <Input
-            name="Street"
-            register={{ ...register("Street") }}
-            error={errors.Street?.message}
+            label="Street"
+            name="street"
+            register={{ ...register("street") }}
+            error={errors.street?.message}
             type="text"
           />
           <Input
-            name="City"
-            register={{ ...register("City") }}
-            error={errors.City?.message}
+            label="City"
+            name="city"
+            register={{ ...register("city") }}
+            error={errors.city?.message}
             type="text"
           />
           <Input
-            name="ZipCode"
-            register={{ ...register("ZipCode") }}
-            error={errors.ZipCode?.message}
+            label="ZipCode"
+            name="zipcode"
+            register={{ ...register("zipcode") }}
+            error={errors.zipcode?.message}
             type="number"
           />
-          <DropDown
-            label="State"
-            options={stateOptions}
-            register={{ ...register("State") }}
-            error={errors.State?.message}
-          />
+          <DropDown label="State" name="state" options={stateOptions} />
         </fieldset>
-        <Datepicker label="Start Date" />
+        <Datepicker label="Start Date" name="startdate" />
         <DropDown
           label="Department"
+          name="department"
           options={departmenOption}
-          register={{ ...register("Department") }}
-          error={errors.Department?.message}
         />
 
         <button type="submit" id="btn">

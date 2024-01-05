@@ -1,32 +1,29 @@
 import { useState } from "react";
 import "./DropDown.scss";
 import Select from "react-select";
-import {
-  StateOptionsType,
-  DepartmenOptionType,
-  RegisterType,
-} from "../../types/components/dropdown/DropdownType";
+import { DropdownOptionType } from "../../types/components/dropdown/DropdownType";
 
 const DropDown = ({
   label,
+  name,
   options,
-  register,
-  error,
-}:
-  | StateOptionsType
-  | (DepartmenOptionType & { register: RegisterType; error?: string })) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+}: {
+  label: string;
+  name: string;
+  options: DropdownOptionType["options"];
+}) => {
+  const [selectedOption, setSelectedOption] = useState<
+    DropdownOptionType["options"][number] | null
+  >(null);
 
   return (
     <div className="dropdown">
-      <label htmlFor="state">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <Select
-        {...register}
         defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        onChange={(selectedOption) => setSelectedOption(selectedOption)}
         options={options}
       />
-      <p className="dropdown__error">{error}</p>
     </div>
   );
 };

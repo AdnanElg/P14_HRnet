@@ -3,11 +3,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Datepicker.scss";
 
-const Datepicker = ({ label }: { label: string }) => {
+const Datepicker = ({ label, name }: { label: string; name: string }) => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   return (
     <div className="datePicker">
-      <label htmlFor="dateOfBirth">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
