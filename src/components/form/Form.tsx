@@ -10,9 +10,13 @@ import * as yup from "yup";
 import { FormType } from "../../types/components/form/FormType";
 import { useDispatch } from "react-redux";
 import { setCreateEmployee } from "../../services/features/FormSlice";
+import { useState } from "react";
+import Modale from "../modale/Modale";
 
 const Form = () => {
   const dispatch = useDispatch();
+
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const stateOptions = dataState.map((item) => ({
     label: item.name,
@@ -21,6 +25,7 @@ const Form = () => {
 
   const departmenOption = dataDepartment.map((item) => ({
     label: item.name,
+    value: item.name,
   }));
 
   const schema = yup.object({
@@ -44,6 +49,12 @@ const Form = () => {
       .string()
       .matches(/^[0-9]+$/, "Invalid ZipCode. Please enter only numbers.")
       .required("ZipCode is required"),
+    state: yup
+      .string()
+      .required("State is required"),
+    department: yup
+      .string()
+      .required("Department is required"),
   });
 
   const form = useForm<FormType>({
@@ -53,19 +64,27 @@ const Form = () => {
       street: "",
       city: "",
       zipcode: "",
+      state: "",
+      department: "",
+      dateofbirth: "",
+      startdate: "",
     },
     resolver: yupResolver(schema),
   });
 
-  const { register, handleSubmit, formState, reset } = form;
+  const { register, handleSubmit, formState, reset, control } = form;
   const { errors, isSubmitted } = formState;
 
   const onSubmit = (data: FormType) => {
     if (isSubmitted) {
-      // appeler la modale
       dispatch(setCreateEmployee(data));
+      setModalVisible(true);
       reset();
     }
+  };
+
+  const handleClose = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -87,7 +106,11 @@ const Form = () => {
           error={errors.lastname?.message}
           type="text"
         />
-        <Datepicker label="Date of Birth" name="dateofbirth" />
+        <Datepicker 
+          label="Date of Birth" 
+          name="dateofbirth" 
+          register={{ ...register("dateofbirth") }}
+        />
         <fieldset>
           <legend>Address</legend>
           <Input
@@ -111,18 +134,28 @@ const Form = () => {
             error={errors.zipcode?.message}
             type="number"
           />
-          <DropDown label="State" name="state" options={stateOptions} />
+          <DropDown 
+            register={{ ...register("state") }} 
+            error={errors.state?.message}
+            label="State" 
+            name="state" 
+            options={stateOptions} 
+            control={control}
+          />
         </fieldset>
-        <Datepicker label="Start Date" name="startdate" />
+        <Datepicker label="Start Date" name="startdate"  register={{ ...register("startdate") }}/>
         <DropDown
+          register={{ ...register("department") }}
+          error={errors.department?.message}
           label="Department"
           name="department"
-          options={departmenOption}
+          options={departmenOption} 
+          control={control}        
         />
-
         <button type="submit" id="btn">
           Save
         </button>
+        <Modale visible={isModalVisible} onClose={handleClose} />
       </form>
     </div>
   );

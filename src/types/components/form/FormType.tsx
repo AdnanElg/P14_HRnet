@@ -4,4 +4,9 @@ export type FormType = {
   street: string;
   city: string;
   zipcode: string;
+  state: string;
+  department : string;
+  dateofbirth: string;
+  startdate: string;
 };
+

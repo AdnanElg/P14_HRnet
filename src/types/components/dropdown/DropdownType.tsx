@@ -1,9 +1,8 @@
-export type StateOptionsType = {
+export type DropdownOptionType = {
   options: { label: string; value: string }[];
 };
 
-export type DepartmenOptionType = {
-  options: { label: string }[];
+export type RegisterType = {
+  name: string ;
 };
 
-export type DropdownOptionType = StateOptionsType | DepartmenOptionType;
