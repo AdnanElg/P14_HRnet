@@ -40,10 +40,10 @@ const Form = () => {
       .required("LastName is required"),
     dateofbirth: yup
       .string()
+      .required("Date of Birth is required")
       .test("Date of Birth", "You must be 18 years or older", function (value) {
         return moment().diff(moment(value, "YYYY-MM-DD"), "years") >= 18;
-      })
-      .required(),
+      }),
     street: yup
       .string()
       .matches(/^[a-zA-Z0-9À-ÖØ-öø-ÿ\s'-]+$/, "Invalid Street")
@@ -57,18 +57,7 @@ const Form = () => {
       .matches(/^[0-9]+$/, "Invalid ZipCode. Please enter only numbers.")
       .required("ZipCode is required"),
     state: yup.string().required("State is required"),
-    startdate: yup
-      .string()
-      .test(
-        "Start Date",
-        "Start date must be valid and in the past",
-        function (value) {
-          const currentDate = moment();
-          const inputDate = moment(value, "yyyy-MM-dd");
-          return inputDate.isValid() && inputDate.isBefore(currentDate);
-        }
-      )
-      .required(),
+    startdate: yup.string().required("Start Date is required"),
     department: yup.string().required("Department is required"),
   });
 

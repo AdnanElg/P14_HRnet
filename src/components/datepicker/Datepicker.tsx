@@ -26,7 +26,7 @@ const Datepicker = <TFieldValues extends FieldValues>({
               selected={startDate}
               onChange={(date) => {
                 setStartDate(date);
-                field.onChange(date);
+                field.onChange(date?.toISOString().split("T")[0]);
               }}
             />
             {error && (
