@@ -11,6 +11,7 @@ import { FormType } from "../../types/components/form/FormType";
 import { useDispatch } from "react-redux";
 import { setCreateEmployee } from "../../services/features/FormSlice";
 import { useState } from "react";
+import moment from "moment";
 import Modale from "../modale/Modale";
 
 const Form = () => {
@@ -28,7 +29,7 @@ const Form = () => {
     value: item.name,
   }));
 
-  const schema = yup.object({
+  const schema = yup.object().shape({
     firstname: yup
       .string()
       .matches(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/, "Invalid FirstName")
@@ -37,6 +38,12 @@ const Form = () => {
       .string()
       .matches(/^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/, "Invalid LastName")
       .required("LastName is required"),
+    dateofbirth: yup
+      .string()
+      .test("Date of Birth", "You must be 18 years or older", function (value) {
+        return moment().diff(moment(value, "YYYY-MM-DD"), "years") >= 18;
+      })
+      .required(),
     street: yup
       .string()
       .matches(/^[a-zA-Z0-9À-ÖØ-öø-ÿ\s'-]+$/, "Invalid Street")
@@ -49,30 +56,38 @@ const Form = () => {
       .string()
       .matches(/^[0-9]+$/, "Invalid ZipCode. Please enter only numbers.")
       .required("ZipCode is required"),
-    state: yup
+    state: yup.string().required("State is required"),
+    startdate: yup
       .string()
-      .required("State is required"),
-    department: yup
-      .string()
-      .required("Department is required"),
+      .test(
+        "Start Date",
+        "Start date must be valid and in the past",
+        function (value) {
+          const currentDate = moment();
+          const inputDate = moment(value, "yyyy-MM-dd");
+          return inputDate.isValid() && inputDate.isBefore(currentDate);
+        }
+      )
+      .required(),
+    department: yup.string().required("Department is required"),
   });
 
   const form = useForm<FormType>({
     defaultValues: {
       firstname: "",
       lastname: "",
+      dateofbirth: "",
       street: "",
       city: "",
       zipcode: "",
       state: "",
-      department: "",
-      dateofbirth: "",
       startdate: "",
+      department: "",
     },
     resolver: yupResolver(schema),
   });
 
-  const { register, handleSubmit, formState, reset, control } = form;
+  const { register, handleSubmit, formState, control, reset } = form;
   const { errors, isSubmitted } = formState;
 
   const onSubmit = (data: FormType) => {
@@ -106,10 +121,11 @@ const Form = () => {
           error={errors.lastname?.message}
           type="text"
         />
-        <Datepicker 
-          label="Date of Birth" 
-          name="dateofbirth" 
-          register={{ ...register("dateofbirth") }}
+        <Datepicker
+          label="Date of Birth"
+          name="dateofbirth"
+          error={errors.dateofbirth?.message}
+          control={control}
         />
         <fieldset>
           <legend>Address</legend>
@@ -134,23 +150,26 @@ const Form = () => {
             error={errors.zipcode?.message}
             type="number"
           />
-          <DropDown 
-            register={{ ...register("state") }} 
+          <DropDown
             error={errors.state?.message}
-            label="State" 
-            name="state" 
-            options={stateOptions} 
+            label="State"
+            name="state"
+            options={stateOptions}
             control={control}
           />
         </fieldset>
-        <Datepicker label="Start Date" name="startdate"  register={{ ...register("startdate") }}/>
+        <Datepicker
+          label="Start Date"
+          name="startdate"
+          error={errors.startdate?.message}
+          control={control}
+        />
         <DropDown
-          register={{ ...register("department") }}
           error={errors.department?.message}
           label="Department"
           name="department"
-          options={departmenOption} 
-          control={control}        
+          options={departmenOption}
+          control={control}
         />
         <button type="submit" id="btn">
           Save

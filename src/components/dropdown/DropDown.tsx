@@ -1,26 +1,20 @@
-import { useState } from "react";
 import "./DropDown.scss";
+import { useState } from "react";
 import Select from "react-select";
-import { DropdownOptionType } from "../../types/components/dropdown/DropdownType";
 import exclamation from "../../assets/svg/exclamation.svg";
-import { RegisterType } from "../../types/components/dropdown/DropdownType";
-import {Controller, ControllerProps} from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
+import {
+  DropdownOptionType,
+  DropDownPropsType,
+} from "../../types/components/dropdown/DropdownType";
 
-const DropDown = ({
+const DropDown = <TFieldValues extends FieldValues>({
   label,
   name,
   options,
-  register,
   error,
-  control
-}: {
-  label: string;
-  name: string;
-  options: DropdownOptionType["options"];
-  error?: string;
-  register: RegisterType;
-  control: ControllerProps;
-}) => {
+  control,
+}: DropDownPropsType<TFieldValues>) => {
   const [selectedOption, setSelectedOption] = useState<
     DropdownOptionType["options"][number] | null
   >(null);
@@ -29,8 +23,8 @@ const DropDown = ({
     <div className="dropdown">
       <label htmlFor={name}>{label}</label>
       <Controller
-        control={control}        
-        {...register}
+        control={control}
+        name={name}
         render={({ field }) => (
           <>
             <Select
