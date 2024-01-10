@@ -1,5 +1,3 @@
-import "./Table.scss";
-
 const Table = () => {
   return <div></div>;
 };

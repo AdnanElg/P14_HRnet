@@ -1,9 +1,11 @@
+import Table from "../../components/table/Table";
 import "./Employees.scss";
 
 const Employees = () => {
   return (
-    <main>
-      <h1>Hello Employee</h1>
+    <main className="container__listemployees">
+      <h1>Employees list</h1>
+      <Table />
     </main>
   );
 };
