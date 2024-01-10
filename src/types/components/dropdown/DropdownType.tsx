@@ -10,4 +10,5 @@ export type DropDownPropsType<TFieldValues extends FieldValues> = {
   options: DropdownOptionType["options"];
   error?: string;
   control: Control<TFieldValues>;
+  resetKey?: string;
 };

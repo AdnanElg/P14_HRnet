@@ -1,5 +1,5 @@
 import "./DropDown.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import exclamation from "../../assets/svg/exclamation.svg";
 import { Controller, FieldValues } from "react-hook-form";
@@ -14,10 +14,15 @@ const DropDown = <TFieldValues extends FieldValues>({
   options,
   error,
   control,
+  resetKey,
 }: DropDownPropsType<TFieldValues>) => {
   const [selectedOption, setSelectedOption] = useState<
     DropdownOptionType["options"][number] | null
   >(null);
+
+  useEffect(() => {
+    setSelectedOption(null);
+  }, [resetKey]);
 
   return (
     <div className="dropdown">

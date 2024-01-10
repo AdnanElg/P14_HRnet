@@ -10,7 +10,6 @@ const Modale = ({
   visible: boolean;
   onClose: () => void;
 }) => {
-
   if (!visible) {
     return null;
   }
@@ -40,7 +39,9 @@ const Modale = ({
         </div>
         <div className="modale__content__block3">
           <button onClick={onClose}>Add new employée</button>
-          <NavLink to="/employees"><button>Employées List</button></NavLink>
+          <NavLink to="/employees">
+            <button>Employées List</button>
+          </NavLink>
         </div>
       </div>
     </div>

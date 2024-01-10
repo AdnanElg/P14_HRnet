@@ -19,6 +19,13 @@ const Form = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
 
+  const [resetKeys, setResetKeys] = useState({
+    dateofbirth: "",
+    startdate: "",
+    state: "",
+    department: "",
+  });
+
   const stateOptions = dataState.map((item) => ({
     label: item.name,
     value: item.abbreviation,
@@ -84,6 +91,12 @@ const Form = () => {
       dispatch(setCreateEmployee(data));
       setModalVisible(true);
       reset();
+      setResetKeys({
+        dateofbirth: new Date().toISOString(),
+        startdate: new Date().toISOString(),
+        state: Math.random().toString(),
+        department: Math.random().toString(),
+      });
     }
   };
 
@@ -115,6 +128,7 @@ const Form = () => {
           name="dateofbirth"
           error={errors.dateofbirth?.message}
           control={control}
+          resetKey={resetKeys.dateofbirth}
         />
         <fieldset>
           <legend>Address</legend>
@@ -145,6 +159,7 @@ const Form = () => {
             name="state"
             options={stateOptions}
             control={control}
+            resetKey={resetKeys.state}
           />
         </fieldset>
         <Datepicker
@@ -152,6 +167,7 @@ const Form = () => {
           name="startdate"
           error={errors.startdate?.message}
           control={control}
+          resetKey={resetKeys.startdate}
         />
         <DropDown
           error={errors.department?.message}
@@ -159,6 +175,7 @@ const Form = () => {
           name="department"
           options={departmenOption}
           control={control}
+          resetKey={resetKeys.department}
         />
         <button type="submit" id="btn">
           Save

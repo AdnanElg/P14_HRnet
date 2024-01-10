@@ -5,4 +5,5 @@ export type DatePickerPropsType<TFieldValues extends FieldValues> = {
   name: FieldPath<TFieldValues>;
   error?: string;
   control: Control<TFieldValues>;
+  resetKey?: string;
 };

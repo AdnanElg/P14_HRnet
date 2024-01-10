@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Datepicker.scss";
@@ -11,8 +11,13 @@ const Datepicker = <TFieldValues extends FieldValues>({
   name,
   error,
   control,
+  resetKey,
 }: DatePickerPropsType<TFieldValues>) => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
+
+  useEffect(() => {
+    setStartDate(new Date());
+  }, [resetKey]);
 
   return (
     <div className="datePicker">
