@@ -3,13 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { FormDataType } from "../../types/services/FormSliceType";
 
 const initialState: FormDataType = {
-  data: {
-    firstname: null,
-    lastname: null,
-    street: null,
-    city: null,
-    zipcode: null,
-  },
+  data: [],
 };
 
 const formSlice = createSlice({
@@ -17,7 +11,7 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     setCreateEmployee: (state, action) => {
-      state.data = action.payload;
+      state.data = [...state.data, action.payload];
     },
   },
 });

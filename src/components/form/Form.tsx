@@ -13,6 +13,7 @@ import { setCreateEmployee } from "../../services/features/FormSlice";
 import { useState } from "react";
 import moment from "moment";
 import Modale from "../modale/Modale";
+import { nanoid } from "nanoid";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const Form = () => {
       .string()
       .required("Date of Birth is required")
       .test("Date of Birth", "You must be 18 years or older", function (value) {
-        return moment().diff(moment(value, "YYYY-MM-DD"), "years") >= 18;
+        return moment().diff(moment(value, "MM/DD/YYYY"), "years") >= 18;
       }),
     street: yup
       .string()
@@ -88,7 +89,19 @@ const Form = () => {
 
   const onSubmit = (data: FormType) => {
     if (isSubmitted) {
-      dispatch(setCreateEmployee(data));
+      const newUser = {
+        id: nanoid(),
+        firstname: data.firstname,
+        lastname: data.lastname,
+        dateofbirth: data.dateofbirth,
+        street: data.street,
+        city: data.city,
+        zipcode: data.zipcode,
+        state: data.state,
+        startdate: data.startdate,
+        department: data.department,
+      };
+      dispatch(setCreateEmployee(newUser));
       setModalVisible(true);
       reset();
       setResetKeys({
@@ -108,7 +121,6 @@ const Form = () => {
     <div className="form">
       <form action="#" id="new-employee" onSubmit={handleSubmit(onSubmit)}>
         <img id="img" src={addUser} alt="icône addUser" />
-
         <Input
           label="First Name"
           name="firstname"

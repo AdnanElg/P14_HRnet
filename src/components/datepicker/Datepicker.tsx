@@ -5,6 +5,7 @@ import "./Datepicker.scss";
 import { DatePickerPropsType } from "../../types/components/datepicker/Datepicker";
 import exclamation from "../../assets/svg/exclamation.svg";
 import { Controller, FieldValues } from "react-hook-form";
+import moment from "moment";
 
 const Datepicker = <TFieldValues extends FieldValues>({
   label,
@@ -31,7 +32,8 @@ const Datepicker = <TFieldValues extends FieldValues>({
               selected={startDate}
               onChange={(date) => {
                 setStartDate(date);
-                field.onChange(date?.toISOString().split("T")[0]);
+                const formattedDate = moment(date).format("MM/DD/YYYY");
+                field.onChange(formattedDate);
               }}
             />
             {error && (

@@ -2,8 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   gap: 30px;
+
+  h2 {
+    color: #000;
+    font-size: 20px;
+    font-weight: 900;
+  }
 }
 
 .table_length {
