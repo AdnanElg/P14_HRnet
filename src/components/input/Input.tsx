@@ -1,5 +1,5 @@
 import "./Input.scss";
-import { InputProps } from "../../types/components/input/Input";
+import { InputProps } from "../../types/components/input/InputType";
 import exclamation from "../../assets/svg/exclamation.svg";
 
 const Input = ({ type, label, name, register, error }: InputProps) => {

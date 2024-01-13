@@ -2,15 +2,24 @@ import "./Navbar.scss";
 import logo from "../../assets/img/logo.png";
 import hamburger from "../../assets/svg/hamburger.svg";
 import addUser from "../../assets/svg/addUser.svg";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(true);
+  const location = useLocation();
 
   const handleToggle = () => {
     setToggle(!toggle);
   };
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  }, [location.pathname]);
 
   return (
     <header>

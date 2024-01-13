@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Datepicker.scss";
-import { DatePickerPropsType } from "../../types/components/datepicker/Datepicker";
+import { DatePickerPropsType } from "../../types/components/datepicker/DatepickerType";
 import exclamation from "../../assets/svg/exclamation.svg";
 import { Controller, FieldValues } from "react-hook-form";
 import moment from "moment";
