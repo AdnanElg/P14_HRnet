@@ -14,6 +14,7 @@ import { useState } from "react";
 import moment from "moment";
 import Modale from "../modale/Modale";
 import { nanoid } from "nanoid";
+import { NavLink } from "react-router-dom";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -192,8 +193,20 @@ const Form = () => {
         <button type="submit" id="btn">
           Save
         </button>
-        <Modale visible={isModalVisible} onClose={handleClose} />
       </form>
+      <Modale visible={isModalVisible} onClose={handleClose}>
+        <div className="form__modale__content1">
+          <p>New collaborator</p>
+          <p>Successfully registered</p>
+          <hr></hr>
+        </div>
+        <div className="form__modale__content2">
+          <button onClick={handleClose}>Add new employée</button>
+          <NavLink to="/employees">
+            <button>Employées List</button>
+          </NavLink>
+        </div>
+      </Modale>
     </div>
   );
 };

@@ -1,14 +1,15 @@
 import "./Modale.scss";
 import user from "../../assets/svg/user.svg";
 import close from "../../assets/svg/close.svg";
-import { NavLink } from "react-router-dom";
 
 const Modale = ({
   visible,
   onClose,
+  children,
 }: {
   visible: boolean;
   onClose: () => void;
+  children?: React.ReactNode;
 }) => {
   if (!visible) {
     return null;
@@ -31,17 +32,7 @@ const Modale = ({
           />
           <h3>Confirmation</h3>
           <hr className="modale__content__block1__line"></hr>
-        </div>
-        <div className="modale__content__block2">
-          <p>New collaborator</p>
-          <p>Successfully registered</p>
-          <hr className="modale__content__block2__line"></hr>
-        </div>
-        <div className="modale__content__block3">
-          <button onClick={onClose}>Add new employée</button>
-          <NavLink to="/employees">
-            <button>Employées List</button>
-          </NavLink>
+          {children}
         </div>
       </div>
     </div>

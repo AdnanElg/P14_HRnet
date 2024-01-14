@@ -64,4 +64,52 @@
       cursor: pointer;
     }
   }
+
+  &__modale__content1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+
+    p {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    hr {
+      background-color: #cad3ae;
+      border: none;
+      width: 200px;
+      height: 3px;
+    }
+  }
+
+  &__modale__content2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+
+    button {
+      line-height: 20px;
+      border: none;
+      border: solid 1px #cad3ae;
+      font-size: 15px;
+      font-weight: 900;
+      border-radius: 10px;
+      background-color: #fff;
+      padding: 13px;
+      color: #cad3ae;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #6c6753;
+      color: #fff;
+    }
+  }
 }
