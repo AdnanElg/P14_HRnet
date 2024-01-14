@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { setCreateEmployee } from "../../services/features/FormSlice";
 import { useState } from "react";
 import moment from "moment";
-import Modale from "../modale/Modale";
+import { Modale } from "modale-adn33";
 import { nanoid } from "nanoid";
 import { NavLink } from "react-router-dom";
 
