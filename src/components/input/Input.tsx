@@ -1,8 +1,21 @@
+// Import modules :
 import "./Input.scss";
 import { InputProps } from "../../types/components/input/InputType";
 import exclamation from "../../assets/svg/exclamation.svg";
 
-const Input = ({ type, label, name, register, error }: InputProps) => {
+/**
+ * Components Input :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
+const Input = ({
+  type,
+  label,
+  name,
+  register,
+  error,
+}: InputProps): JSX.Element => {
   return (
     <div className="input">
       <label htmlFor={name}>{label}</label>
@@ -21,4 +34,5 @@ const Input = ({ type, label, name, register, error }: InputProps) => {
   );
 };
 
+// Export Input
 export default Input;

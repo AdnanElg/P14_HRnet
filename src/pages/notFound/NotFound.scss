@@ -1,4 +1,8 @@
+// Import variables color :
+@use "../../styles/utils/variables";
+
+// Style NotFoud :
 .container__notFound {
-  background-color: #fafbf9;
+  background-color: variables.$nonary;
   padding: 50px 0px 50px 0px;
 }

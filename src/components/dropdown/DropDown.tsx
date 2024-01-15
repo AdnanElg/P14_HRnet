@@ -1,3 +1,4 @@
+// Import modules :
 import "./DropDown.scss";
 import { useEffect, useState } from "react";
 import Select from "react-select";
@@ -8,6 +9,12 @@ import {
   DropDownPropsType,
 } from "../../types/components/dropdown/DropdownType";
 
+/**
+ * Components DropDown :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
 const DropDown = <TFieldValues extends FieldValues>({
   label,
   name,
@@ -15,7 +22,7 @@ const DropDown = <TFieldValues extends FieldValues>({
   error,
   control,
   resetKey,
-}: DropDownPropsType<TFieldValues>) => {
+}: DropDownPropsType<TFieldValues>): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<
     DropdownOptionType["options"][number] | null
   >(null);
@@ -57,4 +64,5 @@ const DropDown = <TFieldValues extends FieldValues>({
   );
 };
 
+// Export Datepicker
 export default DropDown;

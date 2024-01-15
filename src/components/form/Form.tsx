@@ -1,3 +1,4 @@
+// Import modules :
 import "./Form.scss";
 import addUser from "../../assets/svg/addUser.svg";
 import Datepicker from "../datepicker/Datepicker";
@@ -16,7 +17,13 @@ import Modale from "modale-adn33";
 import { nanoid } from "nanoid";
 import { NavLink } from "react-router-dom";
 
-const Form = () => {
+/**
+ * Components Form :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
+const Form = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const [isModalVisible, setModalVisible] = useState(false);
@@ -211,4 +218,5 @@ const Form = () => {
   );
 };
 
+// Export Form
 export default Form;

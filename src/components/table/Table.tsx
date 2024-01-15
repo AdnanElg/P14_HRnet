@@ -1,3 +1,4 @@
+// Import modules :
 import "./Table.scss";
 import DataTable from "@ognimelo/hrnet-datatable";
 import { dataColumn } from "../../data/MockUpListEmployees.json";
@@ -5,7 +6,13 @@ import { dataUsers } from "../../data/MockUpListEmployees.json";
 import { useSelector } from "react-redux";
 import { FormUsersType } from "../../types/components/table/TableType";
 
-const Table = () => {
+/**
+ * Components Table :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
+const Table = (): JSX.Element => {
   const formUsers = useSelector((state: FormUsersType) => state.formSlice.data);
   const users = [...dataUsers, ...formUsers];
 
@@ -16,4 +23,6 @@ const Table = () => {
     </div>
   );
 };
+
+// Export Table
 export default Table;

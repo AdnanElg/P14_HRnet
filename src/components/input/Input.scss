@@ -1,3 +1,7 @@
+// Import variables color :
+@use "../../styles/utils/variables";
+
+// Style Input :
 .input {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,7 @@
   width: 98%;
 
   label {
-    color: #000;
+    color: variables.$primary;
     font-size: 18px;
     font-weight: 800;
     padding-bottom: 5px;
@@ -17,7 +21,7 @@
     border: none;
     height: 30px;
     font-size: 18px;
-    border-bottom: solid 2px #cad3ae;
+    border-bottom: solid 2px variables.$secondary;
     width: 100%;
   }
 
@@ -33,7 +37,7 @@
     }
 
     p {
-      color: red;
+      color: variables.$tertiary;
       font-size: 13px;
       font-weight: 600;
       text-align: justify;

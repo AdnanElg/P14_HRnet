@@ -1,7 +1,14 @@
+// Import modules :
 import "./NotFound.scss";
 import Error from "../../components/error/Error.tsx";
 
-const NotFound = () => {
+/**
+ * Components NotFound :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
+const NotFound = (): JSX.Element => {
   return (
     <main className="container__notFound">
       <Error />
@@ -9,4 +16,5 @@ const NotFound = () => {
   );
 };
 
+// Export modules :
 export default NotFound;

@@ -1,3 +1,4 @@
+// Import modules :
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,13 +8,19 @@ import exclamation from "../../assets/svg/exclamation.svg";
 import { Controller, FieldValues } from "react-hook-form";
 import moment from "moment";
 
+/**
+ * Components Datepicker :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
 const Datepicker = <TFieldValues extends FieldValues>({
   label,
   name,
   error,
   control,
   resetKey,
-}: DatePickerPropsType<TFieldValues>) => {
+}: DatePickerPropsType<TFieldValues>): JSX.Element => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
 
   useEffect(() => {
@@ -53,4 +60,5 @@ const Datepicker = <TFieldValues extends FieldValues>({
   );
 };
 
+// Export Datepicker
 export default Datepicker;

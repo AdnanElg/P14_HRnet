@@ -1,9 +1,13 @@
+// Import variables color :
+@use "../../styles/utils/variables";
+
+// Style Footer :
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-top: 2px solid #6c6753;
+  border-top: 2px solid variables.$quaternary;
   padding-top: 10px;
   padding-bottom: 20px;
 
@@ -14,7 +18,7 @@
   p {
     font-size: 17px;
     font-weight: 300;
-    color: #6c6753;
+    color: variables.$quaternary;
     text-align: center;
     padding-left: 20px;
   }

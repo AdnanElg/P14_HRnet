@@ -1,11 +1,15 @@
+// Import variables color :
+@use "../../styles/utils/variables";
+
+// Style Form :
 .form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #fff;
+  background-color: variables.$quinary;
   border-radius: 20px;
-  box-shadow: 0 8px 24px hsla(210, 8%, 62%, 0.2);
+  box-shadow: 0 8px 24px variables.$senary;
   margin: 2rem auto;
   max-width: 700px;
   padding: 5%;
@@ -34,7 +38,7 @@
 
     fieldset {
       width: 100%;
-      background-color: #eff1e3;
+      background-color: variables.$septenary;
       border: none;
       border-radius: 10px;
       padding-right: 0px;
@@ -43,7 +47,7 @@
       legend {
         text-align: right;
         padding: 10px;
-        background-color: #eff1e3;
+        background-color: variables.$septenary;
         border-radius: 10px;
         font-size: 14px;
         color: #000;
@@ -54,8 +58,8 @@
     #btn {
       margin-top: 50px;
       padding: 10px;
-      background-color: #cad3ae;
-      color: #fff;
+      background-color: variables.$septenary;
+      color: variables.$quinary;
       font-size: 18px;
       font-weight: 800;
       border: none;
@@ -76,11 +80,11 @@
       text-align: center;
       font-size: 18px;
       font-weight: 500;
-      color: #000;
+      color: variables.$primary;
     }
 
     hr {
-      background-color: #cad3ae;
+      background-color: variables.$secondary;
       border: none;
       width: 200px;
       height: 3px;
@@ -97,19 +101,19 @@
     button {
       line-height: 20px;
       border: none;
-      border: solid 1px #cad3ae;
+      border: solid 1px variables.$secondary;
       font-size: 15px;
       font-weight: 900;
       border-radius: 10px;
-      background-color: #fff;
+      background-color: variables.$quinary;
       padding: 13px;
-      color: #cad3ae;
+      color: variables.$secondary;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #6c6753;
-      color: #fff;
+      background-color: variables.$quaternary;
+      color: variables.$quinary;
     }
   }
 }

@@ -1,8 +1,15 @@
+// Import modules :
 import { NavLink } from "react-router-dom";
 import notFound from "../../assets/svg/notFound.svg";
 import "./Error.scss";
 
-const Error = () => {
+/**
+ * Components Error :
+ * @component
+ * @author El Ghalbzouri-Adnan <elghalbzouriadnan@gmail.com>
+ * @returns {JSX.Element}
+ */
+const Error = (): JSX.Element => {
   return (
     <section className="error">
       <img src={notFound} alt="picture 404" />
@@ -14,4 +21,5 @@ const Error = () => {
   );
 };
 
+// Export Error
 export default Error;

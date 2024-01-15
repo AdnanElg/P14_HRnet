@@ -1,3 +1,7 @@
+// Import variables color :
+@use "../../styles/utils/variables";
+
+// Style Datepicker :
 .datePicker {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,7 @@
   width: 98%;
 
   label {
-    color: #000;
+    color: variables.$primary;
     font-size: 18px;
     font-weight: 800;
   }
@@ -15,7 +19,7 @@
   input {
     border: none;
     padding: 10px 0px 10px 0px;
-    border-bottom: solid 2px #cad3ae;
+    border-bottom: solid 2px variables.$secondary;
     width: 100%;
     font-size: 16px;
   }
@@ -32,7 +36,7 @@
     }
 
     p {
-      color: red;
+      color: variables.$tertiary;
       font-size: 13px;
       font-weight: 600;
       text-align: justify;
