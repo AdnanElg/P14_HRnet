@@ -18,10 +18,19 @@ Le projet consiste :
 
 Pour déployer et tester le projet localement, suivez ces étapes d'installation :
 
-1. **Clonez le repo :**
+1. **Clonez le repo du project :**
 
   git clone [https://github.com/AdnanElg/P14_HRnet.git]
 
   front :
   - npm i
   - npm run dev
+
+2. **Clonez le repo du plugin mises en place pour la modale: modale-adn33**
+
+  git clone [https://github.com/AdnanElg/Plugin-Modale-HRnet.git]
+
+  front :
+  - npm i
+  - npm run dev
+
