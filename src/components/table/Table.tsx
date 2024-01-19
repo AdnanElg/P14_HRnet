@@ -14,7 +14,7 @@ import { FormUsersType } from "../../types/components/table/TableType";
  */
 const Table = (): JSX.Element => {
   const formUsers = useSelector((state: FormUsersType) => state.formSlice.data);
-  const users = [...dataUsers, ...formUsers];
+  const users = [...dataUsers]; // Une erreur se produit lorsque je rajoute, ...formUsers dans le tableaux users ?
 
   return (
     <div className="table">
