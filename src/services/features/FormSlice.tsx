@@ -3,20 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { FormDataType } from "../../types/services/FormSliceType";
 
 const initialState: FormDataType = {
-  data: [
-    {
-      id: null,
-      firstname: null,
-      lastname: null,
-      dateofbirth: null,
-      street: null,
-      city: null,
-      zipcode: null,
-      state: null,
-      startdate: null,
-      department: null,
-    },
-  ],
+  data: [],
 };
 
 const formSlice = createSlice({

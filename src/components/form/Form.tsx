@@ -5,7 +5,7 @@ import Datepicker from "../datepicker/Datepicker";
 import DropDown from "../dropdown/DropDown";
 import Input from "../input/Input";
 import { dataState, dataDepartment } from "../../data/MockUpHome.json";
-import { useForm } from "react-hook-form";
+import { Resolver, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormType } from "../../types/components/form/FormType";
@@ -73,7 +73,7 @@ const Form = (): JSX.Element => {
       .matches(/^[0-9]+$/, "Invalid ZipCode. Please enter only numbers.")
       .required("ZipCode is required"),
     state: yup.string().required("State is required"),
-    startdate: yup.string().required("Start Date is required"),
+    startdate: yup.string(),
     department: yup.string().required("Department is required"),
   });
 
@@ -89,8 +89,9 @@ const Form = (): JSX.Element => {
       startdate: "",
       department: "",
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema) as Resolver<FormType>,
   });
+  console.log(form);
 
   const { register, handleSubmit, formState, control, reset } = form;
   const { errors, isSubmitted } = formState;
@@ -185,7 +186,6 @@ const Form = (): JSX.Element => {
         <Datepicker
           label="Start Date"
           name="startdate"
-          error={errors.startdate?.message}
           control={control}
           resetKey={resetKeys.startdate}
         />
