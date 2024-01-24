@@ -10,7 +10,7 @@ import logo from "../../assets/img/logo.png";
  */
 const Footer = (): JSX.Element => {
   return (
-    <footer className="footer">
+    <footer className="footer" data-testid="footer">
       <img src={logo} alt="logo wealth health" />
       <p>Copyright 2023 Wealth Health</p>
     </footer>

@@ -17,7 +17,7 @@ const Table = (): JSX.Element => {
   const users = [...dataUsers, ...formUsers];
 
   return (
-    <div className="table">
+    <div className="table" data-testid="table">
       <h2>Currently {users.length} employees</h2>
       <DataTable columns={dataColumn} data={users} />
     </div>

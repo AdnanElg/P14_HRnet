@@ -41,7 +41,7 @@ const Navbar = (): JSX.Element => {
           <NavLink to={toggle ? "/employees" : "/"} onClick={handleToggle}>
             <img
               src={toggle ? hamburger : addUser}
-              alt={toggle ? "icône hamburge" : "icône addUser"}
+              alt={toggle ? "icône hamburger" : "icône addUser"}
             />
             <span>{toggle ? "Current" : "Create"}</span>
           </NavLink>

@@ -8,7 +8,7 @@ import { dataState, dataDepartment } from "../../data/MockUpHome.json";
 import { Resolver, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { FormType } from "../../types/components/form/FormType";
+import { FormType } from "./Form.types";
 import { useDispatch } from "react-redux";
 import { setCreateEmployee } from "../../services/features/FormSlice";
 import { useState } from "react";
@@ -91,7 +91,6 @@ const Form = (): JSX.Element => {
     },
     resolver: yupResolver(schema) as Resolver<FormType>,
   });
-  console.log(form);
 
   const { register, handleSubmit, formState, control, reset } = form;
   const { errors, isSubmitted } = formState;
@@ -127,8 +126,8 @@ const Form = (): JSX.Element => {
   };
 
   return (
-    <div className="form">
-      <form action="#" id="new-employee" onSubmit={handleSubmit(onSubmit)}>
+    <div className="form" data-testid="form">
+      <form action="#" onSubmit={handleSubmit(onSubmit)}>
         <img id="img" src={addUser} alt="icône addUser" />
         <Input
           label="First Name"

@@ -1,6 +1,6 @@
 // Import modules :
 import "./NotFound.scss";
-import Error from "../../components/error/Error.tsx";
+import Error from "../../components/error/Error";
 
 /**
  * Components NotFound :

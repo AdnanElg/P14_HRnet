@@ -28,7 +28,7 @@ const Datepicker = <TFieldValues extends FieldValues>({
   }, [resetKey]);
 
   return (
-    <div className="datePicker">
+    <div className="datePicker" data-testid="datePicker" >
       <label htmlFor={name}>{label}</label>
       <Controller
         control={control}

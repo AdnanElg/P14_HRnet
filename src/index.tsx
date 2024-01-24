@@ -1,11 +1,11 @@
 // Import modules:
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./styles/index.scss";
 import { Provider } from "react-redux";
-import store from "./services/store.tsx";
+import store from "./services/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 

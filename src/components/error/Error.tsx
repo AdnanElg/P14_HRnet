@@ -11,7 +11,7 @@ import "./Error.scss";
  */
 const Error = (): JSX.Element => {
   return (
-    <section className="error">
+    <section data-testid="error" className="error">
       <img src={notFound} alt="picture 404" />
       <p>Oops ! The page you are requesting does not exist.</p>
       <NavLink to="/">
