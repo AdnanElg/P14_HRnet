@@ -1,6 +1,6 @@
 // Import modules:
 import { createSlice } from "@reduxjs/toolkit";
-import { FormDataType } from "../../types/services/FormSliceType";
+import { FormDataType } from "./FormSlice.type";
 
 const initialState: FormDataType = {
   data: [],

@@ -1,6 +1,6 @@
 // Import modules :
 import "./Input.scss";
-import { InputProps } from "../../types/components/input/InputType";
+import { InputProps } from "./Input.types";
 import exclamation from "../../assets/svg/exclamation.svg";
 
 /**

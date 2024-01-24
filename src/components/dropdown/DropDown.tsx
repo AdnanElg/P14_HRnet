@@ -7,7 +7,7 @@ import { Controller, FieldValues } from "react-hook-form";
 import {
   DropdownOptionType,
   DropDownPropsType,
-} from "../../types/components/dropdown/DropdownType";
+} from "./Dropdown.types";
 
 /**
  * Components DropDown :
