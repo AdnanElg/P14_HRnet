@@ -32,7 +32,7 @@ const DropDown = <TFieldValues extends FieldValues>({
   }, [resetKey]);
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" data-testid="dropdown">
       <label htmlFor={name}>{label}</label>
       <Controller
         control={control}

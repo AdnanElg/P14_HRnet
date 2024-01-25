@@ -17,7 +17,7 @@ const Input = ({
   error,
 }: InputProps): JSX.Element => {
   return (
-    <div className="input">
+    <div className="input" data-testid="input">
       <label htmlFor={name}>{label}</label>
       <input type={type} id={name} {...register} />
       {error && (

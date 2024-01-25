@@ -1,12 +1,12 @@
 export type RegisterType = {
-    name: string;
-  };
+  name: string;
+};
   
-  export type InputProps = {
+export type InputProps = {
     type: string;
     name: string;
     label: string;
     error?: string;
     register: RegisterType;
-  };
+};
   
