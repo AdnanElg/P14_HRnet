@@ -16,6 +16,15 @@ describe("Table Datepicker", () => {
 
     const form = screen.getByTestId("form");
     expect(form).toBeInTheDocument();
+
+    const input = screen.getByTestId("input");
+    expect(input).toBeInTheDocument();
+
+    const datepicker = screen.getByTestId("datepicker");
+    expect(datepicker).toBeInTheDocument();
+
+    const dropdown = screen.getByTestId("dropdown");
+    expect(dropdown).toBeInTheDocument()
   });
 });
 

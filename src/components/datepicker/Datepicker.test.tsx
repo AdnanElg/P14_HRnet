@@ -1,4 +1,3 @@
-// Import modules :
 import { render, screen } from "@testing-library/react";
 import store from "../../services/store";
 import { Provider } from "react-redux";
@@ -7,16 +6,16 @@ import { useForm } from "react-hook-form";
 
 // Test Integration :
 describe("Table Datepicker", () => {
-  const { control } = useForm();
-
   test("renders correctly", () => {
+    const { control } = useForm()
+
     const props = {
       label: "Date of Birth",
       name: "dateofbirth",
       error: "",
       control: control,
-      resetKey: "",
-    }
+      resetKey: ""
+    };
 
     render(
       <Provider store={store}>
@@ -25,8 +24,6 @@ describe("Table Datepicker", () => {
     );
 
     const dropdown = screen.getByTestId("datePicker");
-    expect(dropdown).toBeInTheDocument();
+    expect(dropdown).not.toBeInTheDocument();
   });
 });
-
-// A revoir si autre test à faire ?
