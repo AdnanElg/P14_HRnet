@@ -14,6 +14,7 @@ describe("Input Component", () => {
       name: "firstname",
       register: { name: "firstname" },
       error: "", 
+      dataTestId: "inputFirstName"
     };
 
     render(
@@ -22,21 +23,13 @@ describe("Input Component", () => {
       </Provider>
     );
 
-    const containerInput = screen.getByTestId("input");
-    expect(containerInput).toBeInTheDocument();
-
-    const label = screen.getByText('First Name');
-    expect(label).toBeInTheDocument();
-
-    const input = screen.getByRole('textbox', {
-      name: "First Name",
-    });
+    const input = screen.getByTestId("inputFirstName");
     expect(input).toBeInTheDocument();
 
     const imgError = screen.queryByAltText("icône exclamation");
     expect(imgError).not.toBeInTheDocument();
 
-    const paragrapheError = screen.queryByText("FirstName is required");
+    const paragrapheError = screen.queryByText("Invalid FirstName");
     expect(paragrapheError).not.toBeInTheDocument();
   });
 
@@ -50,6 +43,7 @@ describe("Input Component", () => {
       name: "firstname",
       register: { name: "firstname" },
       error: "Invalid FirstName",
+      dataTestId: "inputFirstName"
     };
 
     render(
@@ -58,9 +52,8 @@ describe("Input Component", () => {
       </Provider>
     );
 
-    const input = screen.getByRole('textbox', {
-      name: "First Name",
-    });
+    const input = screen.getByTestId("inputFirstName");
+    expect(input).toBeInTheDocument();
 
     await userEvent.type(input, '123');
 

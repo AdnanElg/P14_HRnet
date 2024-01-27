@@ -20,7 +20,6 @@ describe("Table Component", () => {
 
     const h2 = table.querySelector('h2');
     expect(h2).toBeInTheDocument();
+    expect(h2).toHaveTextContent(/Currently \d+ employees/);
   });
 });
-
-// A revoir si autre test à faire ?

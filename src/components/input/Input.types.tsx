@@ -8,5 +8,6 @@ export type InputProps = {
     label: string;
     error?: string;
     register: RegisterType;
+    dataTestId: string;
 };
   

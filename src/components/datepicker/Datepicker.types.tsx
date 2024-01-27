@@ -7,4 +7,5 @@ export type DatePickerPropsType<TFieldValues extends FieldValues> = {
   error?: string;
   control: Control<TFieldValues>;
   resetKey?: string;
+  dataTestId: string
 };

@@ -135,6 +135,7 @@ const Form = (): JSX.Element => {
           register={{ ...register("firstname") }}
           error={errors.firstname?.message}
           type="text"
+          dataTestId="inputFirstName"
         />
         <Input
           label="Last Name"
@@ -142,6 +143,7 @@ const Form = (): JSX.Element => {
           register={{ ...register("lastname") }}
           error={errors.lastname?.message}
           type="text"
+          dataTestId="inputLastName"
         />
         <Datepicker
           label="Date of Birth"
@@ -149,6 +151,7 @@ const Form = (): JSX.Element => {
           error={errors.dateofbirth?.message}
           control={control}
           resetKey={resetKeys.dateofbirth}
+          dataTestId="datePickerDateOfBirth"
         />
         <fieldset>
           <legend>Address</legend>
@@ -158,6 +161,7 @@ const Form = (): JSX.Element => {
             register={{ ...register("street") }}
             error={errors.street?.message}
             type="text"
+            dataTestId="inputStreet"
           />
           <Input
             label="City"
@@ -165,6 +169,7 @@ const Form = (): JSX.Element => {
             register={{ ...register("city") }}
             error={errors.city?.message}
             type="text"
+            dataTestId="inputCity"
           />
           <Input
             label="ZipCode"
@@ -172,6 +177,7 @@ const Form = (): JSX.Element => {
             register={{ ...register("zipcode") }}
             error={errors.zipcode?.message}
             type="number"
+            dataTestId="inputZipCode"
           />
           <DropDown
             error={errors.state?.message}
@@ -180,6 +186,7 @@ const Form = (): JSX.Element => {
             options={stateOptions}
             control={control}
             resetKey={resetKeys.state}
+            dataTestId="dropDownState"
           />
         </fieldset>
         <Datepicker
@@ -187,6 +194,7 @@ const Form = (): JSX.Element => {
           name="startdate"
           control={control}
           resetKey={resetKeys.startdate}
+          dataTestId="datePickerStartDate"
         />
         <DropDown
           error={errors.department?.message}
@@ -195,12 +203,13 @@ const Form = (): JSX.Element => {
           options={departmenOption}
           control={control}
           resetKey={resetKeys.department}
+          dataTestId="dropDownDepartment"
         />
         <button type="submit" id="btn">
           Save
         </button>
       </form>
-      <Modale visible={isModalVisible} onClose={handleClose}>
+      <Modale visible={isModalVisible} onClose={handleClose} data-testid="modale">
         <div className="form__modale__content1">
           <p>New collaborator</p>
           <p>Successfully registered</p>

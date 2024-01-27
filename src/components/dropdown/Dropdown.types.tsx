@@ -12,4 +12,5 @@ export type DropDownPropsType<TFieldValues extends FieldValues> = {
   error?: string;
   control: Control<TFieldValues>;
   resetKey?: string;
+  dataTestId: string;
 };

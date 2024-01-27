@@ -15,9 +15,10 @@ const Input = ({
   name,
   register,
   error,
+  dataTestId
 }: InputProps): JSX.Element => {
   return (
-    <div className="input" data-testid="input">
+    <div className="input" data-testid={dataTestId}>
       <label htmlFor={name}>{label}</label>
       <input type={type} id={name} {...register} />
       {error && (

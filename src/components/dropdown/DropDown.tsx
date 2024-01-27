@@ -22,6 +22,7 @@ const DropDown = <TFieldValues extends FieldValues>({
   error,
   control,
   resetKey,
+  dataTestId
 }: DropDownPropsType<TFieldValues>): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<
     DropdownOptionType["options"][number] | null
@@ -32,7 +33,7 @@ const DropDown = <TFieldValues extends FieldValues>({
   }, [resetKey]);
 
   return (
-    <div className="dropdown" data-testid="dropdown">
+    <div className="dropdown" data-testid={dataTestId}>
       <label htmlFor={name}>{label}</label>
       <Controller
         control={control}
