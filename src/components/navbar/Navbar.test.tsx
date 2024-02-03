@@ -9,8 +9,6 @@ import Navbar from "./Navbar";
 // Test Integration :
 describe("Navbar Component", () => {
   test("renders correctly", () => {
-    userEvent.setup();
-
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -27,7 +25,7 @@ describe("Navbar Component", () => {
 
     const hamburger = screen.getByAltText("icône hamburger");
     expect(hamburger).toBeInTheDocument();
-    
+
     const addUser = screen.queryByAltText("icône addUser");
     expect(addUser).not.toBeInTheDocument();
 
@@ -37,7 +35,6 @@ describe("Navbar Component", () => {
     const create = screen.queryByText("Create");
     expect(create).not.toBeInTheDocument();
   });
-
 
   test("navigates to the home page on clicking the logo", async () => {
     render(
@@ -52,7 +49,6 @@ describe("Navbar Component", () => {
     await userEvent.click(logo);
     expect(window.location.pathname).toBe("/");
   });
-
 
   test("toggles between hamburger and addUser on click", async () => {
     userEvent.setup();
@@ -80,7 +76,6 @@ describe("Navbar Component", () => {
     const hamburgerInactive = screen.queryByAltText("icône hamburger");
     expect(hamburgerInactive).not.toBeInTheDocument();
   });
-
 
   test("toggles between Create and Current on link click", async () => {
     userEvent.setup();

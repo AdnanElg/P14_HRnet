@@ -4,10 +4,7 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import exclamation from "../../assets/svg/exclamation.svg";
 import { Controller, FieldValues } from "react-hook-form";
-import {
-  DropdownOptionType,
-  DropDownPropsType,
-} from "./Dropdown.types";
+import { DropdownOptionType, DropDownPropsType } from "./Dropdown.types";
 
 /**
  * Components DropDown :
@@ -22,7 +19,7 @@ const DropDown = <TFieldValues extends FieldValues>({
   error,
   control,
   resetKey,
-  dataTestId
+  dataTestId,
 }: DropDownPropsType<TFieldValues>): JSX.Element => {
   const [selectedOption, setSelectedOption] = useState<
     DropdownOptionType["options"][number] | null
@@ -53,7 +50,7 @@ const DropDown = <TFieldValues extends FieldValues>({
                 <img
                   src={exclamation}
                   className="dropdown__error__img"
-                  alt="icône exclamation"
+                  alt={`icône exclamation ${dataTestId}`}
                 />
                 <p>{error}</p>
               </div>

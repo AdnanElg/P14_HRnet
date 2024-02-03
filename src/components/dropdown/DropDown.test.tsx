@@ -1,46 +1,41 @@
-// import { render, screen, fireEvent } from "@testing-library/react";
-// import store from "../../services/store";
-// import { Provider } from "react-redux";
-// import DropDown from "./DropDown";
-// import { useForm } from "react-hook-form";
+import { render, screen, renderHook } from "@testing-library/react";
+import store from "../../services/store";
+import { Provider } from "react-redux";
+import DropDown from "./DropDown";
+import { useForm } from "react-hook-form";
 
-// test("user selects an option", () => {
-//   const { control } = useForm()
- 
-//   const stateOptions = [
-//     {
-//       name: "Alabama",
-//       abbreviation: "AL",
-//     },
-//     {
-//       name: "Alaska",
-//       abbreviation: "AK",
-//     },
-//   ];
+describe("component Dropdown", () => {
+  test("renders correctly", () => {
+    const { result } = renderHook(() => useForm());
 
-//   const props = {
-//     label: "State",
-//     name: "state",
-//     options: stateOptions,
-//     error: "",
-//     control: control,
-//     resetKey: "",
-//   };
+    const stateOptions = [
+      {
+        label: "Alabama",
+        value: "AL",
+      },
+      {
+        label: "Alaska",
+        value: "AK",
+      },
+    ];
 
-//   render(
-//     <Provider store={store}>
-//       <DropDown {...props} />
-//     </Provider>
-//   );
+    const props = {
+      label: "State",
+      name: "state",
+      options: stateOptions,
+      error: "",
+      control: result.current.control,
+      resetKey: "",
+      dataTestId: "dropDownState",
+    };
 
-//   const selectedOptionBefore = screen.getByLabelText("State");
-//   expect(selectedOptionBefore).toHaveValue("");
+    render(
+      <Provider store={store}>
+        <DropDown {...props} />
+      </Provider>
+    );
 
-//   fireEvent.change(selectedOptionBefore, {
-//     target: { value: "AL" },
-//   });
-
-//   const selectedOptionAfter = screen.getByLabelText("State");
-//   expect(selectedOptionAfter).toHaveValue("AL");
-
-// });
+    const dropdown = screen.getByTestId("dropDownState");
+    expect(dropdown).toBeInTheDocument();
+  });
+});

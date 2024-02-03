@@ -7,14 +7,14 @@ import Input from "./Input";
 
 // Test Integration :
 describe("Input Component", () => {
-  test("renders correctly without error", () => {
+  test("renders correctly", () => {
     const props = {
       type: "text",
       label: "First Name",
       name: "firstname",
       register: { name: "firstname" },
-      error: "", 
-      dataTestId: "inputFirstName"
+      error: "",
+      dataTestId: "inputFirstName",
     };
 
     render(
@@ -26,13 +26,12 @@ describe("Input Component", () => {
     const input = screen.getByTestId("inputFirstName");
     expect(input).toBeInTheDocument();
 
-    const imgError = screen.queryByAltText("icône exclamation");
+    const imgError = screen.queryByAltText("icône exclamation inputFirstName");
     expect(imgError).not.toBeInTheDocument();
 
     const paragrapheError = screen.queryByText("Invalid FirstName");
     expect(paragrapheError).not.toBeInTheDocument();
   });
-
 
   test("Show an error when typing incorrectly in the input", async () => {
     userEvent.setup();
@@ -43,7 +42,7 @@ describe("Input Component", () => {
       name: "firstname",
       register: { name: "firstname" },
       error: "Invalid FirstName",
-      dataTestId: "inputFirstName"
+      dataTestId: "inputFirstName",
     };
 
     render(
@@ -55,9 +54,9 @@ describe("Input Component", () => {
     const input = screen.getByTestId("inputFirstName");
     expect(input).toBeInTheDocument();
 
-    await userEvent.type(input, '123');
+    await userEvent.type(input, "123");
 
-    const imgError = screen.getByAltText("icône exclamation");
+    const imgError = screen.getByAltText("icône exclamation inputFirstName");
     expect(imgError).toBeInTheDocument();
 
     const paragrapheError = screen.getByText("Invalid FirstName");

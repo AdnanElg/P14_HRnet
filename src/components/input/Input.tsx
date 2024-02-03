@@ -15,7 +15,7 @@ const Input = ({
   name,
   register,
   error,
-  dataTestId
+  dataTestId,
 }: InputProps): JSX.Element => {
   return (
     <div className="input" data-testid={dataTestId}>
@@ -26,7 +26,7 @@ const Input = ({
           <img
             src={exclamation}
             className="input__error__img"
-            alt="icône exclamation"
+            alt={`icône exclamation ${dataTestId}`}
           />
           <p>{error}</p>
         </div>

@@ -20,7 +20,7 @@ const Datepicker = <TFieldValues extends FieldValues>({
   error,
   control,
   resetKey,
-  dataTestId
+  dataTestId,
 }: DatePickerPropsType<TFieldValues>): JSX.Element => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
 
@@ -29,7 +29,7 @@ const Datepicker = <TFieldValues extends FieldValues>({
   }, [resetKey]);
 
   return (
-    <div className="datePicker" data-testid={dataTestId} >
+    <div className="datePicker" data-testid={dataTestId}>
       <label htmlFor={name}>{label}</label>
       <Controller
         control={control}
@@ -49,7 +49,7 @@ const Datepicker = <TFieldValues extends FieldValues>({
                 <img
                   src={exclamation}
                   className="datePicker__error__img"
-                  alt="icône exclamation"
+                  alt={`icône exclamation ${dataTestId}`}
                 />
                 <p>{error}</p>
               </div>

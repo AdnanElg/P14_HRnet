@@ -70,7 +70,7 @@ const Form = (): JSX.Element => {
       .required("City is required"),
     zipcode: yup
       .string()
-      .matches(/^[0-9]+$/, "Invalid ZipCode. Please enter only numbers.")
+      .matches(/^\d{5}$/, "Invalid ZipCode. Please enter only numbers.")
       .required("ZipCode is required"),
     state: yup.string().required("State is required"),
     startdate: yup.string(),
@@ -209,7 +209,11 @@ const Form = (): JSX.Element => {
           Save
         </button>
       </form>
-      <Modale visible={isModalVisible} onClose={handleClose} data-testid="modale">
+      <Modale
+        visible={isModalVisible}
+        onClose={handleClose}
+        data-testid="modale"
+      >
         <div className="form__modale__content1">
           <p>New collaborator</p>
           <p>Successfully registered</p>
