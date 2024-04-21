@@ -24,10 +24,13 @@ import { NavLink } from "react-router-dom";
  * @returns {JSX.Element}
  */
 const Form = (): JSX.Element => {
+  // Initialisation de useDispatch pour envoyer des actions au store Redux
   const dispatch = useDispatch();
 
+  // État pour contrôler la visibilité de la modale
   const [isModalVisible, setModalVisible] = useState(false);
 
+  // État pour gérer les clés de réinitialisation des champs
   const [resetKeys, setResetKeys] = useState({
     dateofbirth: "",
     startdate: "",
@@ -35,16 +38,19 @@ const Form = (): JSX.Element => {
     department: "",
   });
 
+  // Options de l'état
   const stateOptions = dataState.map((item) => ({
     label: item.name,
     value: item.abbreviation,
   }));
 
+  // Options du département
   const departmenOption = dataDepartment.map((item) => ({
     label: item.name,
     value: item.name,
   }));
 
+  // Schéma de validation des données du formulaire
   const schema = yup.object().shape({
     firstname: yup
       .string()
@@ -77,6 +83,7 @@ const Form = (): JSX.Element => {
     department: yup.string().required("Department is required"),
   });
 
+  // Initialisation du formulaire avec React Hook Form
   const form = useForm<FormType>({
     defaultValues: {
       firstname: "",
@@ -89,14 +96,18 @@ const Form = (): JSX.Element => {
       startdate: "",
       department: "",
     },
+    // Utilisation du résolveur yup pour la validation du formulaire
     resolver: yupResolver(schema) as Resolver<FormType>,
   });
 
+  // Extraction des méthodes et des états de React Hook Form
   const { register, handleSubmit, formState, control, reset } = form;
   const { errors, isSubmitted } = formState;
 
+  // Fonction appelée lors de la soumission du formulaire
   const onSubmit = (data: FormType) => {
     if (isSubmitted) {
+      // Création d'un nouvel utilisateur avec les données du formulaire
       const newUser = {
         id: nanoid(),
         firstname: data.firstname,
@@ -121,6 +132,7 @@ const Form = (): JSX.Element => {
     }
   };
 
+  // Fonction appelée pour fermer la modale
   const handleClose = () => {
     setModalVisible(false);
   };

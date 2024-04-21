@@ -15,15 +15,16 @@ import moment from "moment";
  * @returns {JSX.Element}
  */
 const Datepicker = <TFieldValues extends FieldValues>({
-  label,
-  name,
-  error,
-  control,
-  resetKey,
-  dataTestId,
+  label, // Libellé du champ de date
+  name, // Nom du champ de date
+  error, // Erreur associée au champ de date
+  control, // Contrôle du formulaire
+  resetKey, // Clé de réinitialisation
+  dataTestId, // Identifiant de test pour les données
 }: DatePickerPropsType<TFieldValues>): JSX.Element => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
 
+  // Réinitialise la date de début lorsque la clé de réinitialisation change.
   useEffect(() => {
     setStartDate(new Date());
   }, [resetKey]);
@@ -31,6 +32,8 @@ const Datepicker = <TFieldValues extends FieldValues>({
   return (
     <div className="datePicker" data-testid={dataTestId}>
       <label htmlFor={name}>{label}</label>
+      {/* Contrôle le champ de date en utilisant le composant DatePicker, met à jour la date sélectionnée et formate la date
+      pour l'envoyer au formulaire en cas de changement en affiche une icône d'erreur et un message d'erreur si une erreur est présente. */}
       <Controller
         control={control}
         name={name}

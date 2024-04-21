@@ -10,14 +10,16 @@ import exclamation from "../../assets/svg/exclamation.svg";
  * @returns {JSX.Element}
  */
 const Input = ({
-  type,
-  label,
-  name,
-  register,
-  error,
-  dataTestId,
+  type, // Type de l'input (text, email, etc.)
+  label, // Libellé de l'input
+  name, // Nom de l'input
+  register, // Fonction de registration
+  error, // Message d'erreur éventuel
+  dataTestId, // Identifiant de test pour les données
 }: InputProps): JSX.Element => {
   return (
+    // Affiche un champ de saisie avec une étiquette, gère l'enregistrement des données,
+    // et affiche une icône d'erreur et un message d'erreur si nécessaire.
     <div className="input" data-testid={dataTestId}>
       <label htmlFor={name}>{label}</label>
       <input type={type} id={name} {...register} />

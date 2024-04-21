@@ -13,13 +13,17 @@ import { useState, useEffect } from "react";
  * @returns {JSX.Element}
  */
 const Navbar = (): JSX.Element => {
+  // État pour gérer l'état du menu déroulant
   const [toggle, setToggle] = useState(true);
+  // Obtention de l'URL actuelle
   const location = useLocation();
 
+  // Fonction pour basculer l'état du menu déroulant
   const handleToggle = () => {
     setToggle(!toggle);
   };
 
+  // Effet pour mettre à jour l'état du menu déroulant en fonction de l'URL
   useEffect(() => {
     if (location.pathname === "/") {
       setToggle(true);

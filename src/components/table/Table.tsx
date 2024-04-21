@@ -13,7 +13,9 @@ import { FormUsersType } from "./Table.types";
  * @returns {JSX.Element}
  */
 const Table = (): JSX.Element => {
+  // Obtention des données du formulaire d'utilisateurs depuis le store Redux
   const formUsers = useSelector((state: FormUsersType) => state.formSlice.data);
+  // Fusion des données d'utilisateurs statiques et du formulaire
   const users = [...dataUsers, ...formUsers];
 
   return (
